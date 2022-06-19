@@ -1,17 +1,14 @@
-# bodybuildingpal
+# BodybuildingPal 
+Tracks eating, bodyweight, physique, and workouts over time to give a crucial bird’s eye view of your journey to bodybuilding success.
 
-A new Flutter project.
+## Platforms: 
+Android, iOS
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# bodybuildingpal
+## Features:
+1)	Meal Plan Tracking
+2)	Body weight Tracking
+3)	Body fat Calculator 
+4)	Body fat Tracking
+5)	Physique Tracking
+6)	Workout Plan Tracking
+7)	Workout Performance Tracking
