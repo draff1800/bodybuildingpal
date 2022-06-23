@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const BodybuildingPal());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class BodybuildingPal extends StatelessWidget {
+  const BodybuildingPal({Key? key}) : super(key: key);
 
   static const String _title = 'Workouts';
 
@@ -14,19 +14,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange
       ),
-      home: const MyStatefulWidget(),
+      home: const WorkoutsPageStatefulWidget(),
     );
   }
 }
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class WorkoutsPageStatefulWidget extends StatefulWidget {
+  const WorkoutsPageStatefulWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  State<WorkoutsPageStatefulWidget> createState() => _WorkoutsPageStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _WorkoutsPageStatefulWidgetState extends State<WorkoutsPageStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
