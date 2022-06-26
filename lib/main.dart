@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'new_workout.dart';
+import 'add_workout.dart';
 
 void main() => runApp(const BodybuildingPal());
 
@@ -42,14 +42,16 @@ class _WorkoutsRouteState extends State<WorkoutsRoute> {
           Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.fromLTRB(0, 275, 0, 275),
-              child: const Text('There\'s nothing here... Yet!',
+              child: const Text('Tap below to add a workout.',
                   style: TextStyle(color: Colors.grey))),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const NewWorkoutRoute()))
+          Navigator.push(
+            context, 
+            MaterialPageRoute(builder: (context) => const AddWorkoutRoute())
+          )
         },
         tooltip: 'Add Workout',
         child: const Icon(Icons.add),
