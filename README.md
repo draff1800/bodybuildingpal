@@ -1,5 +1,5 @@
 # BodybuildingPal 
-Tracks eating, bodyweight, physique, and workouts over time to give a crucial bird’s eye view of your journey to bodybuilding success.
+Tracks eating, bodyweight, physique and workouts over time to give a crucial bird’s eye view of your journey to bodybuilding success.
 
 ## Platforms: 
 - Android
