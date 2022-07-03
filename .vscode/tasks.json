@@ -12,7 +12,7 @@
       {
         "label": "Run Flutter Application",
         "type": "shell",
-        "command": "flutter run",
+        "command": "flutter run --target=lib/routes/view_workouts.dart",
         "group": "build",
       }
     ]
