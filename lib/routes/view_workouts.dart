@@ -13,19 +13,19 @@ class BodybuildingPal extends StatelessWidget {
     return MaterialApp(
       title: _title,
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: const WorkoutsRoute(),
+      home: const ViewWorkoutsRoute(),
     );
   }
 }
 
-class WorkoutsRoute extends StatefulWidget {
-  const WorkoutsRoute({Key? key}) : super(key: key);
+class ViewWorkoutsRoute extends StatefulWidget {
+  const ViewWorkoutsRoute({Key? key}) : super(key: key);
 
   @override
-  State<WorkoutsRoute> createState() => _WorkoutsRouteState();
+  State<ViewWorkoutsRoute> createState() => _ViewWorkoutsRouteState();
 }
 
-class _WorkoutsRouteState extends State<WorkoutsRoute> {
+class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,7 @@ class _WorkoutsRouteState extends State<WorkoutsRoute> {
         onPressed: () => {
           Navigator.push(
             context, 
-            MaterialPageRoute(builder: (context) => const AddWorkoutRoute())
+            MaterialPageRoute(builder: (context) => AddWorkoutRoute())
           )
         },
         tooltip: 'Add Workout',
