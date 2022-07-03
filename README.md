@@ -16,4 +16,4 @@ Tracks eating, bodyweight, physique, and workouts over time to give a crucial bi
 - [ ] **0.8** - Redesigned UI I (*Workout Plan Tracking, Workout Performance Tracking*)
 - [ ] **0.9** - Redesigned UI II (*Meal Plan Tracking, Body Weight Tracking*)
 - [ ] **1.0** 🚀🎉 - Redesigned UI III (*Body Fat Tracking, Physique Tracking*)
-- [ ] **1.0+** - Testing, Stability Improvements & More Features  
+- [ ] **1.0+** - Testing, Performance / Stability Improvements & More Features  
