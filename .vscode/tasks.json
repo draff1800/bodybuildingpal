@@ -10,9 +10,9 @@
         "group": "build"
       },
       {
-        "label": "Run Flutter Application",
+        "label": "Run BodybuildingPal",
         "type": "shell",
-        "command": "flutter run --target=lib/routes/view_workouts.dart",
+        "command": "flutter run",
         "group": "build",
       }
     ]
