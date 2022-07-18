@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './routes/view_workouts.dart';
+import 'routes/view_workouts/view_workouts.dart';
 
 void main() => runApp(const BodybuildingPal());
 
