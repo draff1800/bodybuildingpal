@@ -58,10 +58,12 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
                   style: TextStyle(color: Colors.grey)
               )
              )
-           : Container(
-                alignment: Alignment.center,
-                child: const WorkoutCard()
-            )
+           : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                for(var workout in _workouts ) WorkoutCard(workout['name'])
+              ],
+            ), 
         ],
       ),
       floatingActionButton: FloatingActionButton(
