@@ -34,7 +34,8 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
       appBar: AppBar(
         title: const Text('BodybuildingPal'),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
         children: <Widget>[
           Container(
               alignment: Alignment.topLeft,
@@ -64,7 +65,8 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
                 for(var workout in _workouts ) WorkoutCard(workout['name'])
               ],
             ), 
-        ],
+          ],
+        )
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
