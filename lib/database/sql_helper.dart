@@ -41,4 +41,9 @@ class SQLHelper {
     final db = await SQLHelper.db();
     return db.query('workouts', where: "id = ?", whereArgs: [id], limit: 1);
   }
+
+  static Future<void> deleteWorkout(int id) async {
+    final db = await SQLHelper.db();
+    await db.delete("workouts", where: "id = ?", whereArgs: [id]);
+  }
 }
