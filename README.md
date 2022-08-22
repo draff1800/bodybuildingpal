@@ -6,7 +6,7 @@ Tracks eating, bodyweight, physique and workouts over time to give a crucial bir
 - iOS
 
 ## Planned Releases:
-- [ ] **0.1** - Workout Plan Tracking ⏳
+⏳ **0.1** - Workout Plan Tracking
 - [ ] **0.2** - Workout Performance Tracking
 - [ ] **0.3** - Meal Plan Tracking
 - [ ] **0.4** - Body Weight Tracking
