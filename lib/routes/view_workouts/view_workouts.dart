@@ -103,7 +103,8 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddWorkoutRoute()))
+              MaterialPageRoute(builder: (context) => AddWorkoutRoute())
+          ).whenComplete(() => _getWorkouts())
         },
         tooltip: 'Add Workout',
         child: const Icon(Icons.add),
