@@ -3,7 +3,8 @@ import '../database/sql_helper.dart';
 import '../database/data_models/workout.dart';
 
 class ViewWorkoutRoute extends StatefulWidget {
-  const ViewWorkoutRoute({Key? key}) : super(key: key);
+  final int workoutId;
+  const ViewWorkoutRoute(this.workoutId, {Key? key}) : super(key: key);
 
   @override
   State<ViewWorkoutRoute> createState() => _ViewWorkoutRouteState();
@@ -13,7 +14,7 @@ class _ViewWorkoutRouteState extends State<ViewWorkoutRoute> {
   String _workoutName = '';
 
   void _refreshWorkoutName() async {
-    final data = await SQLHelper.getWorkout(1);
+    final data = await SQLHelper.getWorkout(widget.workoutId);
     final Workout workout = Workout(name: data[0]['name']);
     setState(() {
       _workoutName = workout.name;

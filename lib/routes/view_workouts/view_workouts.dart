@@ -1,3 +1,4 @@
+import 'package:bodybuildingpal/routes/view_workout.dart';
 import 'package:bodybuildingpal/routes/view_workouts/workout_card.dart';
 import 'package:flutter/material.dart';
 import '../../database/sql_helper.dart';
@@ -92,6 +93,12 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
                             for (var workout in _workouts)
                               GestureDetector(
                                   onTapDown: (tapInfo) => _getTapPosition(tapInfo),
+                                  onTapUp: (tapInfo) => {
+                                    Navigator.push(
+                                      context, 
+                                      MaterialPageRoute(builder: (context) => ViewWorkoutRoute(workout['id']))
+                                    )
+                                  },
                                   onLongPress: () =>
                                       _showWorkoutMenu(context, workout['id']),
                                   child: WorkoutCard(workout['name']))

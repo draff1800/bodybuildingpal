@@ -49,12 +49,12 @@ class AddWorkoutRoute extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 _addWorkout();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ViewWorkoutRoute()
-                    )
-                );
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         // builder: (context) => const ViewWorkoutRoute()
+                //     )
+                // );
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: const Size(348, 20), primary: Colors.blue),
