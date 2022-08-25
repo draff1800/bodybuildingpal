@@ -7,8 +7,8 @@ class AddWorkoutRoute extends StatelessWidget {
 
   final TextEditingController _nameController = TextEditingController();
 
-  Future<void> _addWorkout() async {
-    await SQLHelper.createWorkout(_nameController.text);
+  Future<int> _addWorkout() async {
+    return await SQLHelper.createWorkout(_nameController.text);
   }
 
   @override
@@ -23,17 +23,14 @@ class AddWorkoutRoute extends StatelessWidget {
               alignment: Alignment.topLeft,
               margin: const EdgeInsets.fromLTRB(20, 15, 0, 200),
               child: const Text('Add Workout',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35)
-              )
-          ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35))),
           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text('Name:',
                     style: TextStyle(color: Colors.grey, fontSize: 20)),
-              )
-          ),
+              )),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             child: TextField(
@@ -48,13 +45,15 @@ class AddWorkoutRoute extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ElevatedButton(
               onPressed: () {
-                _addWorkout();
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         // builder: (context) => const ViewWorkoutRoute()
-                //     )
-                // );
+                _addWorkout().then((savedWorkoutId) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ViewWorkoutRoute(savedWorkoutId)
+                      )
+                  );
+                });
               },
               style: ElevatedButton.styleFrom(
                   fixedSize: const Size(348, 20), primary: Colors.blue),
