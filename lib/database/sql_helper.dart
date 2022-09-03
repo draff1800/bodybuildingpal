@@ -20,19 +20,11 @@ class SQLHelper {
     );
   }
 
-  static Future<int> createWorkout(String name) async {
-    final db = await SQLHelper.db();
-
-    final data = {'name': name};
-    final id = await db.insert(
-      'workouts', 
-      data,
-      conflictAlgorithm: sql.ConflictAlgorithm.replace
-    );
-    return id;
+  static Future<void> deleteDB() async {
+    await sql.deleteDatabase('bodybuildingpal.db');
   }
 
-  static Future<List<Map<String, dynamic>>> getWorkouts() async {
+  static Future<List<Map<String, dynamic>>> getAllWorkouts() async {
     final db = await SQLHelper.db();
     return db.query('workouts', orderBy: "id");
   }
@@ -40,6 +32,15 @@ class SQLHelper {
   static Future<List<Map<String, dynamic>>> getWorkout(int id) async {
     final db = await SQLHelper.db();
     return db.query('workouts', where: "id = ?", whereArgs: [id], limit: 1);
+  }
+
+  static Future<int> createWorkout(String name) async {
+    final db = await SQLHelper.db();
+
+    final data = {'name': name};
+    final id = await db.insert('workouts', data,
+        conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    return id;
   }
 
   static Future<void> deleteWorkout(int id) async {

@@ -24,7 +24,7 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
   }
 
   void _getWorkouts() async {
-    final data = await SQLHelper.getWorkouts();
+    final data = await SQLHelper.getAllWorkouts();
     setState(() {
       _workouts = data;
       _isLoading = false;
@@ -109,6 +109,8 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
+          // Line below is for dev purposes. Swap with Nav.push when needed.
+          // SQLHelper.deleteDB()
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => AddWorkoutRoute())
           ).whenComplete(() => _getWorkouts())

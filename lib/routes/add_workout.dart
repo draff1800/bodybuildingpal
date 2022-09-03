@@ -14,6 +14,7 @@ class AddWorkoutRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('BodybuildingPal'),
       ),
@@ -46,12 +47,12 @@ class AddWorkoutRoute extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 _addWorkout().then((savedWorkoutId) {
-                  Navigator.push(
+                  Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              ViewWorkoutRoute(savedWorkoutId)
-                      )
+                          builder: (context) => ViewWorkoutRoute(savedWorkoutId)
+                      ),
+                      ModalRoute.withName("/")
                   );
                 });
               },
