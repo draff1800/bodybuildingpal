@@ -14,15 +14,15 @@ class SQLHelper {
         name TEXT
       )
     """);
-  await database.execute("""
-      CREATE TABLE workout_exercises(
-        workout_id INTEGER NOT NULL,
-        exercise_id INTEGER NOT NULL,
-        FOREIGN KEY(workout_id) REFERENCES workouts(id),
-        FOREIGN KEY(exercise_id) REFERENCES exercises(id),
-        PRIMARY KEY(workout_id, exercise_id)
-      )
-    """);
+    await database.execute("""
+        CREATE TABLE workout_exercises(
+          workout_id INTEGER NOT NULL,
+          exercise_id INTEGER NOT NULL,
+          FOREIGN KEY(workout_id) REFERENCES workouts(id),
+          FOREIGN KEY(exercise_id) REFERENCES exercises(id),
+          PRIMARY KEY(workout_id, exercise_id)
+        )
+      """);
   }
 
   static Future<sql.Database> db() async {
