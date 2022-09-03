@@ -47,12 +47,12 @@ class AddWorkoutRoute extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 _addWorkout().then((savedWorkoutId) {
-                  Navigator.pushAndRemoveUntil(
+                  Navigator.popUntil(context, ModalRoute.withName("/"));
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => ViewWorkoutRoute(savedWorkoutId)
-                      ),
-                      ModalRoute.withName("/")
+                      )
                   );
                 });
               },
