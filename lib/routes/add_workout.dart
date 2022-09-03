@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../database/sql_helper.dart';
 import 'view_workout.dart';
+import '../constants.dart' as constants;
 
 class AddWorkoutRoute extends StatelessWidget {
   AddWorkoutRoute({super.key});
@@ -8,7 +9,7 @@ class AddWorkoutRoute extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
 
   Future<int> _addWorkout() async {
-    return await SQLHelper.createWorkout(_nameController.text);
+    return await SQLHelper.createWithName(constants.workoutsTableName, _nameController.text);
   }
 
   @override
@@ -51,9 +52,8 @@ class AddWorkoutRoute extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ViewWorkoutRoute(savedWorkoutId)
-                      )
-                  );
+                          builder: (context) =>
+                              ViewWorkoutRoute(savedWorkoutId)));
                 });
               },
               style: ElevatedButton.styleFrom(

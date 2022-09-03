@@ -8,6 +8,12 @@ class SQLHelper {
         name TEXT
       )
     """);
+    await database.execute("""
+      CREATE TABLE exercises(
+        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        name TEXT
+      )
+    """);
   }
 
   static Future<sql.Database> db() async {
@@ -24,27 +30,27 @@ class SQLHelper {
     await sql.deleteDatabase('bodybuildingpal.db');
   }
 
-  static Future<List<Map<String, dynamic>>> getAllWorkouts() async {
+  static Future<List<Map<String, dynamic>>> getAll(String tableName) async {
     final db = await SQLHelper.db();
-    return db.query('workouts', orderBy: "id");
+    return db.query(tableName, orderBy: "id");
   }
 
-  static Future<List<Map<String, dynamic>>> getWorkout(int id) async {
+  static Future<List<Map<String, dynamic>>> getOneByID(String tableName, int id) async {
     final db = await SQLHelper.db();
-    return db.query('workouts', where: "id = ?", whereArgs: [id], limit: 1);
+    return db.query(tableName, where: "id = ?", whereArgs: [id], limit: 1);
   }
 
-  static Future<int> createWorkout(String name) async {
+  static Future<int> createWithName(String tableName, String name) async {
     final db = await SQLHelper.db();
 
     final data = {'name': name};
-    final id = await db.insert('workouts', data,
+    final id = await db.insert(tableName, data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return id;
   }
 
-  static Future<void> deleteWorkout(int id) async {
+  static Future<void> deleteOneByID(String tableName, int id) async {
     final db = await SQLHelper.db();
-    await db.delete("workouts", where: "id = ?", whereArgs: [id]);
+    await db.delete(tableName, where: "id = ?", whereArgs: [id]);
   }
 }

@@ -3,6 +3,7 @@ import 'package:bodybuildingpal/routes/view_workouts/workout_card.dart';
 import 'package:flutter/material.dart';
 import '../../database/sql_helper.dart';
 import '../add_workout.dart';
+import '../../constants.dart' as constants;
 
 class ViewWorkoutsRoute extends StatefulWidget {
   const ViewWorkoutsRoute({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
   }
 
   void _getWorkouts() async {
-    final data = await SQLHelper.getAllWorkouts();
+    final data = await SQLHelper.getAll(constants.workoutsTableName);
     setState(() {
       _workouts = data;
       _isLoading = false;
@@ -56,7 +57,7 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
 
     switch (result) {
       case 'delete':
-        await SQLHelper.deleteWorkout(workoutID);
+        await SQLHelper.deleteOneByID(constants.workoutsTableName, workoutID);
         _getWorkouts();
         break;
     }
@@ -70,50 +71,51 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
       ),
       body: SingleChildScrollView(
           child: Column(
-            children: <Widget>[
-              Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.fromLTRB(20, 15, 0, 0),
-                  child: const Text('Workouts',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35))),
-              _isLoading
+        children: <Widget>[
+          Container(
+              alignment: Alignment.topLeft,
+              margin: const EdgeInsets.fromLTRB(20, 15, 0, 0),
+              child: const Text('Workouts',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35))),
+          _isLoading
+              ? Container(
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.fromLTRB(0, 275, 0, 275),
+                  child: const CircularProgressIndicator())
+              : _workouts.isEmpty
                   ? Container(
                       alignment: Alignment.center,
                       margin: const EdgeInsets.fromLTRB(0, 275, 0, 275),
-                      child: const CircularProgressIndicator())
-                  : _workouts.isEmpty
-                      ? Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.fromLTRB(0, 275, 0, 275),
-                          child: const Text('Tap below to add a workout.',
-                              style: TextStyle(color: Colors.grey)))
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            for (var workout in _workouts)
-                              GestureDetector(
-                                  onTapDown: (tapInfo) => _getTapPosition(tapInfo),
-                                  onTapUp: (tapInfo) => {
+                      child: const Text('Tap below to add a workout.',
+                          style: TextStyle(color: Colors.grey)))
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        for (var workout in _workouts)
+                          GestureDetector(
+                              onTapDown: (tapInfo) => _getTapPosition(tapInfo),
+                              onTapUp: (tapInfo) => {
                                     Navigator.push(
-                                      context, 
-                                      MaterialPageRoute(builder: (context) => ViewWorkoutRoute(workout['id']))
-                                    )
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ViewWorkoutRoute(
+                                                    workout['id'])))
                                   },
-                                  onLongPress: () =>
-                                      _showWorkoutMenu(context, workout['id']),
-                                  child: WorkoutCard(workout['name']))
-                          ],
-                        ),
-            ],
-          )
-      ),
+                              onLongPress: () =>
+                                  _showWorkoutMenu(context, workout['id']),
+                              child: WorkoutCard(workout['name']))
+                      ],
+                    ),
+        ],
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
           // Line below is for dev purposes. Swap with Nav.push when needed.
           // SQLHelper.deleteDB()
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddWorkoutRoute())
-          ).whenComplete(() => _getWorkouts())
+                  MaterialPageRoute(builder: (context) => AddWorkoutRoute()))
+              .whenComplete(() => _getWorkouts())
         },
         tooltip: 'Add Workout',
         child: const Icon(Icons.add),

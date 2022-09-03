@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../database/sql_helper.dart';
 import '../database/data_models/workout.dart';
+import '../constants.dart' as constants;
 
 class ViewWorkoutRoute extends StatefulWidget {
   final int workoutId;
@@ -14,7 +15,7 @@ class _ViewWorkoutRouteState extends State<ViewWorkoutRoute> {
   String _workoutName = '';
 
   void _refreshWorkoutName() async {
-    final data = await SQLHelper.getWorkout(widget.workoutId);
+    final data = await SQLHelper.getOneByID(constants.workoutsTableName, widget.workoutId);
     final Workout workout = Workout(name: data[0]['name']);
     setState(() {
       _workoutName = workout.name;
