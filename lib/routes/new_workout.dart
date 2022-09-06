@@ -3,8 +3,8 @@ import '../database/sql_helper.dart';
 import 'view_workout.dart';
 import '../constants.dart' as constants;
 
-class AddWorkoutRoute extends StatelessWidget {
-  AddWorkoutRoute({super.key});
+class NewWorkoutRoute extends StatelessWidget {
+  NewWorkoutRoute({super.key});
 
   final TextEditingController _nameController = TextEditingController();
 
@@ -24,7 +24,7 @@ class AddWorkoutRoute extends StatelessWidget {
           Container(
               alignment: Alignment.topLeft,
               margin: const EdgeInsets.fromLTRB(20, 15, 0, 200),
-              child: const Text('Add Workout',
+              child: const Text('New Workout',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35))),
           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),

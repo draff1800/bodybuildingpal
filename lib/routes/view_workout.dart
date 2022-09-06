@@ -1,3 +1,4 @@
+import 'package:bodybuildingpal/routes/add_exercise.dart';
 import 'package:flutter/material.dart';
 import '../database/sql_helper.dart';
 import '../database/data_models/workout.dart';
@@ -54,7 +55,12 @@ class _ViewWorkoutRouteState extends State<ViewWorkoutRoute> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddExerciseRoute())
+          )
+        },
         tooltip: 'Add Exercise',
         child: const Icon(Icons.add),
       ),

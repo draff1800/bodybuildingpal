@@ -2,7 +2,7 @@ import 'package:bodybuildingpal/routes/view_workout.dart';
 import 'package:bodybuildingpal/routes/view_workouts/workout_card.dart';
 import 'package:flutter/material.dart';
 import '../../database/sql_helper.dart';
-import '../add_workout.dart';
+import '../new_workout.dart';
 import '../../constants.dart' as constants;
 
 class ViewWorkoutsRoute extends StatefulWidget {
@@ -114,7 +114,7 @@ class _ViewWorkoutsRouteState extends State<ViewWorkoutsRoute> {
           // Line below is for dev purposes. Swap with Nav.push when needed.
           // SQLHelper.deleteDB()
           Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AddWorkoutRoute()))
+                  MaterialPageRoute(builder: (context) => NewWorkoutRoute()))
               .whenComplete(() => _getWorkouts())
         },
         tooltip: 'Add Workout',
