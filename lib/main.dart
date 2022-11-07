@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'routes/view_workouts/view_workouts.dart';
 
 void main() => runApp(const BodybuildingPal());
 
@@ -12,8 +11,8 @@ class BodybuildingPal extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: _title,
-      theme: ThemeData(primarySwatch: Colors.orange),
-      home: const ViewWorkoutsRoute(),
+      theme: ThemeData(primarySwatch: Colors.blue)
+      // home: (Call Route here)
     );
   }
 }
