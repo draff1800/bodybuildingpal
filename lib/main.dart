@@ -11,7 +11,7 @@ class BodybuildingPal extends StatelessWidget {
     return MaterialApp(
       title: "BodybuildingPal",
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightBlue,
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Color(0xfffafafa),
