@@ -90,13 +90,16 @@ class ProfileState extends State<Profile> {
                     child: Icon(Icons.straighten, size: 30),
                   ),
                   const Text('Height',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
+                  ),
                   Container(
                       constraints: const BoxConstraints.expand(
                         height: 20,
                         width: 200,
                       ),
-                      child: TextFormField())
+                      child: TextFormField()
+                  ),
+                  const Text('cm', style: TextStyle(fontSize: 15))
                 ]),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
