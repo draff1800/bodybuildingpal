@@ -1,5 +1,6 @@
 import 'package:bodybuildingpal/screens/profile.dart';
 import 'package:flutter/material.dart';
+import './constants/app_colours.dart';
 
 void main() => runApp(const BodybuildingPal());
 
@@ -13,11 +14,12 @@ class BodybuildingPal extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
         appBarTheme: const AppBarTheme(
-          foregroundColor: Colors.black,
-          backgroundColor: Color(0xfffafafa),
+          foregroundColor: AppColours.black,
+          backgroundColor: AppColours.white,
           centerTitle: true,
           elevation: 0
-        )
+        ),
+        scaffoldBackgroundColor: AppColours.grey
       ),
       home: const Profile()
     );

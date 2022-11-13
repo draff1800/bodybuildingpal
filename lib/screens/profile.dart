@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import '../constants/app_colours.dart';
 
 enum Gender { male, female }
 
@@ -32,26 +33,29 @@ class ProfileState extends State<Profile> {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      body: Center(
-          child: Form(
-            key: _formKey,
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: Form(
+          key: _formKey,
+          child: Container(
+            color: AppColours.white,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                  padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
                   child: Text(
                   'Attributes',
                     style: TextStyle(
-                        color: Colors.lightBlue,
+                        color: AppColours.blue,
                         fontSize: 15,
                         fontWeight: FontWeight.bold
                     ),
                   )
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: Row(children: [
                     const Padding(
                       padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -86,7 +90,7 @@ class ProfileState extends State<Profile> {
                   ]),
                 ),
                 Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Row(children: [
                       const Padding(
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -119,14 +123,14 @@ class ProfileState extends State<Profile> {
                                   setState(() {
                                     _dobInput.text = formattedDate;
                                   });
-                                } else {}
+                                }
                               }
                           )
-                    )
+                      )
                     ])
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: Row(children: [
                     const Padding(
                       padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -155,7 +159,7 @@ class ProfileState extends State<Profile> {
                   ]),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8),
+                  padding: const EdgeInsets.fromLTRB(10, 15, 10, 40),
                   child: ElevatedButton(
                       onPressed: null,
                       style: ElevatedButton.styleFrom(
@@ -165,7 +169,8 @@ class ProfileState extends State<Profile> {
                 ),
               ],
             ),
-          )
+          ) 
+        )
       ),
     );
   }
