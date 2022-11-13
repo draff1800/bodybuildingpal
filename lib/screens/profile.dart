@@ -119,7 +119,7 @@ class ProfileState extends State<Profile> {
 
                                 if (pickedDate != null) {
                                   String formattedDate =
-                                      DateFormat('yyyy-MM-dd').format(pickedDate);
+                                      DateFormat('dd-MM-yyy').format(pickedDate);
                                   setState(() {
                                     _dobInput.text = formattedDate;
                                   });
