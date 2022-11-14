@@ -9,17 +9,22 @@ class Profile extends StatefulWidget {
   const Profile({super.key});
 
   @override
-  ProfileState createState() {
-    return ProfileState();
-  }
+  State<Profile> createState() => _ProfileState();
 }
 
-class ProfileState extends State<Profile> {
+class _ProfileState extends State<Profile> {
   final _formKey = GlobalKey<FormState>();
   Gender? _genderInput;
   final TextEditingController _dobInput = TextEditingController();
   final TextEditingController _heightInput = TextEditingController();
 
+  @override
+  void dispose() {
+    _genderInput = null;
+    _dobInput.dispose();
+    _heightInput.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
