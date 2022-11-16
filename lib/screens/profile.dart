@@ -31,6 +31,13 @@ class _ProfileState extends State<Profile> {
     initializeDateFormatting();
   }
 
+  bool _saveButtonEnabled() {
+    if (_genderInput != null && _dobInput.text.isNotEmpty && _heightInput.text.isNotEmpty) {
+      return true;
+    } 
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,6 +118,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         child: TextField(
                             controller: _dobInput,
+                            onChanged: (value) {setState((){});},
                             readOnly: true,
                             onTap: () async {
                               DateTime? pickedDate = await showDatePicker(
@@ -152,7 +160,10 @@ class _ProfileState extends State<Profile> {
                         height: 20,
                         width: 60,
                       ),
-                      child: TextField(controller: _heightInput)
+                      child: TextField(
+                        controller: _heightInput, 
+                        onChanged: (value) {setState((){});}
+                      )
                   ),
                   const Padding(
                     padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -163,7 +174,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 15, 10, 40),
                 child: ElevatedButton(
-                    onPressed: null,
+                    onPressed: _saveButtonEnabled() ? () {} : null,
                     style: ElevatedButton.styleFrom(
                         minimumSize: const Size.fromHeight(50)
                     ),
