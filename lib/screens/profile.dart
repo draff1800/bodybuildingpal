@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import '../constants/app_colours.dart';
-import 'logbook.dart';
+import 'navigation_bar_overlay.dart';
 
 enum Gender { male, female }
 
@@ -173,7 +173,8 @@ class _ProfileState extends State<Profile> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const LogBook()),
+                                      builder: (context) =>
+                                          const NavigationBarOverlay()),
                                 );
                               }
                             : null,

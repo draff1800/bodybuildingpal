@@ -10,6 +10,8 @@ class LogBook extends StatefulWidget {
 class _LogBookState extends State<LogBook> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Text("logbook"),
+    );
   }
 }
