@@ -25,7 +25,9 @@ class _NavigationBarOverlayState extends State<NavigationBarOverlay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+        ),
         body: Center(
           child: _navigationBarOverlayOptions.elementAt(_selectedIndex),
         ),
