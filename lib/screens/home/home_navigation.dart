@@ -28,14 +28,15 @@ class _HomeNavigationState extends State<HomeNavigation> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
+          backgroundColor: AppColours.lightGrey,
         ),
         body: Center(
           child: _navigationBarOverlayOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
             decoration: const BoxDecoration(
-                color: AppColours.darkGrey,
-                border: Border(top: BorderSide(color: AppColours.darkGrey, width: 2))),
+                color: AppColours.darkGrey1,
+                border: Border(top: BorderSide(color: AppColours.darkGrey1, width: 2))),
             child: BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
