@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:bodybuildingpal/screens/home/logbook.dart';
+import '../../constants/app_colours.dart';
+import 'logbook.dart';
 import 'insights.dart';
 
 class HomeNavigation extends StatefulWidget {
@@ -31,19 +32,24 @@ class _HomeNavigationState extends State<HomeNavigation> {
         body: Center(
           child: _navigationBarOverlayOptions.elementAt(_selectedIndex),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Logbook',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.auto_graph_outlined),
-              label: 'Insights',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ));
+        bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+                color: AppColours.darkGrey,
+                border: Border(top: BorderSide(color: AppColours.darkGrey, width: 2))),
+            child: BottomNavigationBar(
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.calendar_today),
+                  label: 'Logbook',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.auto_graph_outlined),
+                  label: 'Insights',
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              backgroundColor: AppColours.grey,
+            )));
   }
 }
