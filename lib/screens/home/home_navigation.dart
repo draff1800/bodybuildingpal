@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:bodybuildingpal/screens/logbook.dart';
+import 'package:bodybuildingpal/screens/home/logbook.dart';
 import 'insights.dart';
 
-class NavigationBarOverlay extends StatefulWidget {
-  const NavigationBarOverlay({super.key});
+class HomeNavigation extends StatefulWidget {
+  const HomeNavigation({super.key});
 
   @override
-  State<NavigationBarOverlay> createState() => _NavigationBarOverlayState();
+  State<HomeNavigation> createState() => _HomeNavigationState();
 }
 
-class _NavigationBarOverlayState extends State<NavigationBarOverlay> {
+class _HomeNavigationState extends State<HomeNavigation> {
   int _selectedIndex = 0;
   static const List<Widget> _navigationBarOverlayOptions = <Widget>[
     LogBook(),

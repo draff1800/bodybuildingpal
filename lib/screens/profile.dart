@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import '../constants/app_colours.dart';
-import 'navigation_bar_overlay.dart';
+import 'home/home_navigation.dart';
 
 enum Gender { male, female }
 
@@ -33,9 +33,7 @@ class _ProfileState extends State<Profile> {
   }
 
   bool _saveButtonEnabled() {
-    if (_genderInput != null &&
-        _dobInput.text.isNotEmpty &&
-        _heightInput.text.isNotEmpty) {
+    if (_genderInput != null && _dobInput.text.isNotEmpty && _heightInput.text.isNotEmpty) {
       return true;
     }
     return false;
@@ -60,21 +58,18 @@ class _ProfileState extends State<Profile> {
                       child: Text(
                         'Attributes',
                         style: TextStyle(
-                            color: AppColours.blue,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
+                            color: AppColours.blue, fontSize: 15, fontWeight: FontWeight.bold),
                       )),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Row(children: [
                       const Padding(
                           padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                          child: Icon(Icons.transgender, size: 40)),
+                          child: Icon(Icons.person, size: 40)),
                       const Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                           child: Text('Gender',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))),
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
                       Radio(
                           value: Gender.male,
                           groupValue: _genderInput,
@@ -104,9 +99,7 @@ class _ProfileState extends State<Profile> {
                         const Padding(
                             padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
                             child: Text('DOB',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold))),
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
                         Container(
                             constraints: const BoxConstraints.expand(
                               height: 20,
@@ -122,14 +115,12 @@ class _ProfileState extends State<Profile> {
                                   DateTime? pickedDate = await showDatePicker(
                                       context: context,
                                       initialDate: DateTime.now(),
-                                      firstDate:
-                                          DateTime(DateTime.now().year - 120),
+                                      firstDate: DateTime(DateTime.now().year - 120),
                                       lastDate: DateTime.now());
 
                                   if (pickedDate != null) {
                                     String formattedDate =
-                                        DateFormat('dd-MM-yyy')
-                                            .format(pickedDate);
+                                        DateFormat('dd-MM-yyy').format(pickedDate);
                                     setState(() {
                                       _dobInput.text = formattedDate;
                                     });
@@ -148,8 +139,7 @@ class _ProfileState extends State<Profile> {
                       const Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 39, 0),
                           child: Text('Height',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))),
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
                       Container(
                           constraints: const BoxConstraints.expand(
                             height: 20,
@@ -173,13 +163,11 @@ class _ProfileState extends State<Profile> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const NavigationBarOverlay()),
+                                      builder: (context) => const HomeNavigation()),
                                 );
                               }
                             : null,
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(50)),
+                        style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
                         child: const Text('SAVE')),
                   ),
                 ],
