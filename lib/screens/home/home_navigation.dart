@@ -28,15 +28,22 @@ class _HomeNavigationState extends State<HomeNavigation> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: AppColours.lightGrey,
+          backgroundColor: AppColours.grey1,
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.account_circle_outlined, color: AppColours.grey4, size: 40),
+              padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+              onPressed: () {},
+            )
+          ],
         ),
         body: Center(
           child: _navigationBarOverlayOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
             decoration: const BoxDecoration(
-                color: AppColours.darkGrey1,
-                border: Border(top: BorderSide(color: AppColours.darkGrey1, width: 2))),
+                color: AppColours.grey3,
+                border: Border(top: BorderSide(color: AppColours.grey3, width: 2))),
             child: BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
@@ -50,7 +57,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
               ],
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
-              backgroundColor: AppColours.grey,
+              backgroundColor: AppColours.grey2,
             )));
   }
 }
