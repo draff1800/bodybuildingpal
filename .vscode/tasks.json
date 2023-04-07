@@ -4,9 +4,15 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "Connect Phone for Wireless Debugging",
+        "label": "Wirelessly Debug on Android Phone (Step 1)",
         "type": "shell",
-        "command": "adb tcpip 5555 && adb connect ${input:phoneIPAddress}",
+        "command": "adb pair ${input:phoneIPAddress}:${input:phonePort1}",
+        "group": "build"
+      },
+      {
+        "label": "Wirelessly Debug on Android Phone (Step 2)",
+        "type": "shell",
+        "command": "adb connect ${input:phoneIPAddress}:${input:phonePort2}",
         "group": "build"
       },
       {
@@ -21,6 +27,16 @@
         "id": "phoneIPAddress",
         "description": "Phone IP Address",
         "default": "192.168.1.196",
+        "type": "promptString"
+      },
+      {
+        "id": "phonePort1",
+        "description": "Port in \"Pair device with pairing code\" modal (Samsung)",
+        "type": "promptString"
+      },
+      {
+        "id": "phonePort2",
+        "description": "Port in \"Wireless debugging\" screen (Samsung)",
         "type": "promptString"
       }
     ]
