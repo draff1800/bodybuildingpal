@@ -10,8 +10,6 @@ class Insights extends StatefulWidget {
 class _InsightsState extends State<Insights> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("insights"),
-    );
+    return const Text("insights");
   }
 }

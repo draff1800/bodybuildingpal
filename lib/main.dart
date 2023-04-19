@@ -19,7 +19,7 @@ class BodybuildingPal extends StatelessWidget {
           centerTitle: true,
           elevation: 0
         ),
-        scaffoldBackgroundColor: AppColours.grey
+        scaffoldBackgroundColor: AppColours.grey1
       ),
       home: const Profile()
     );
