@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../constants/app_colours.dart';
 import 'logbook.dart';
 import 'insights.dart';
+import '../profile.dart';
 
 class HomeNavigation extends StatefulWidget {
   const HomeNavigation({super.key});
@@ -33,7 +34,13 @@ class _HomeNavigationState extends State<HomeNavigation> {
             IconButton(
               icon: const Icon(Icons.account_circle_outlined, color: AppColours.grey4, size: 40),
               padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Profile()),
+                );
+              },
             )
           ],
         ),
