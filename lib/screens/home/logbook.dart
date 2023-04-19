@@ -26,7 +26,7 @@ class _LogBookState extends State<LogBook> {
               BoxDecoration(color: AppColours.white, border: Border.all(color: AppColours.grey5)),
           child: TableCalendar(
             firstDay: DateTime.utc(2000, 01, 01),
-            lastDay: DateTime(currentDate.year + 1, currentDate.month, currentDate.day),
+            lastDay: DateTime(currentDate.year, currentDate.month + 1, currentDate.day),
             focusedDay: currentDate,
             headerStyle: const HeaderStyle(formatButtonVisible: false),
             calendarBuilders: CalendarBuilders(
