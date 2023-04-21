@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constants/app_colours.dart';
 import 'home/home_navigation.dart';
 
@@ -30,6 +31,23 @@ class _ProfileState extends State<Profile> {
   void initState() {
     super.initState();
     initializeDateFormatting();
+    _loadProfileData();
+  }
+
+  Future<void> _loadProfileData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _genderInput = (Gender.values.firstWhere((element) => element.toString() == prefs.getString('gender'))); 
+      _dobInput.text = prefs.getString('dob').toString();
+      _heightInput.text = prefs.getString('height').toString();
+    });
+  }
+
+  Future<void> _saveProfileData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('gender', _genderInput.toString());
+    await prefs.setString('dob', _dobInput.text);
+    await prefs.setString('height', _heightInput.text);
   }
 
   bool _saveButtonEnabled() {
@@ -37,6 +55,11 @@ class _ProfileState extends State<Profile> {
       return true;
     }
     return false;
+  }
+
+  void _handleSaveButtonPress(BuildContext context) {
+    _saveProfileData();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeNavigation()));
   }
 
   @override
@@ -158,15 +181,7 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 10, 40),
                     child: ElevatedButton(
-                        onPressed: _saveButtonEnabled()
-                            ? () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomeNavigation()),
-                                );
-                              }
-                            : null,
+                        onPressed: _saveButtonEnabled() ? () => _handleSaveButtonPress(context) : null,
                         style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
                         child: const Text('SAVE')),
                   ),
