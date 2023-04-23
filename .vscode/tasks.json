@@ -26,7 +26,7 @@
       {
         "id": "phoneIPAddress",
         "description": "Phone IP Address",
-        "default": "192.168.1.196",
+        "default": "10.2.108.69",
         "type": "promptString"
       },
       {
