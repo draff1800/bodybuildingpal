@@ -18,6 +18,9 @@ class _ProfileState extends State<Profile> {
   Gender? _genderInput;
   final TextEditingController _dobInput = TextEditingController();
   final TextEditingController _heightInput = TextEditingController();
+  String? _savedGender;
+  String? _savedDoB;
+  String? _savedHeight;
 
   @override
   void dispose() {
@@ -37,10 +40,19 @@ class _ProfileState extends State<Profile> {
   Future<void> _loadProfileData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _genderInput =
-          (Gender.values.firstWhere((element) => element.toString() == prefs.getString('gender')));
+      try {
+        _genderInput = Gender.values.firstWhere(
+          (element) => element.toString() == prefs.getString('gender'),
+        );
+      } catch (e) {
+        _genderInput = null;
+      }
       _dobInput.text = prefs.getString('dob').toString();
       _heightInput.text = prefs.getString('height').toString();
+
+      _savedGender = prefs.getString('gender');
+      _savedDoB = prefs.getString('dob');
+      _savedHeight = prefs.getString('height');
     });
   }
 
@@ -53,7 +65,11 @@ class _ProfileState extends State<Profile> {
 
   bool _saveButtonEnabled() {
     if (_genderInput != null && _dobInput.text.isNotEmpty && _heightInput.text.isNotEmpty) {
-      return true;
+      if (_genderInput.toString() != _savedGender ||
+          _dobInput.text != _savedDoB ||
+          _heightInput.text != _savedHeight) {
+        return true;
+      }
     }
     return false;
   }
