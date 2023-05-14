@@ -37,7 +37,8 @@ class _ProfileState extends State<Profile> {
   Future<void> _loadProfileData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      _genderInput = (Gender.values.firstWhere((element) => element.toString() == prefs.getString('gender'))); 
+      _genderInput =
+          (Gender.values.firstWhere((element) => element.toString() == prefs.getString('gender')));
       _dobInput.text = prefs.getString('dob').toString();
       _heightInput.text = prefs.getString('height').toString();
     });
@@ -181,7 +182,8 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 15, 10, 40),
                     child: ElevatedButton(
-                        onPressed: _saveButtonEnabled() ? () => _handleSaveButtonPress(context) : null,
+                        onPressed:
+                            _saveButtonEnabled() ? () => _handleSaveButtonPress(context) : null,
                         style: ElevatedButton.styleFrom(minimumSize: const Size.fromHeight(50)),
                         child: const Text('SAVE')),
                   ),
