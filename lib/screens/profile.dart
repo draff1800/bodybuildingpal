@@ -18,9 +18,7 @@ class _ProfileState extends State<Profile> {
   Gender? _genderInput;
   final TextEditingController _dobInput = TextEditingController();
   final TextEditingController _heightInput = TextEditingController();
-  String? _savedGender;
-  String? _savedDoB;
-  String? _savedHeight;
+  bool _fieldChanged = false;
 
   @override
   void dispose() {
@@ -47,12 +45,11 @@ class _ProfileState extends State<Profile> {
       } catch (e) {
         _genderInput = null;
       }
-      _dobInput.text = prefs.getString('dob').toString();
-      _heightInput.text = prefs.getString('height').toString();
 
-      _savedGender = prefs.getString('gender');
-      _savedDoB = prefs.getString('dob');
-      _savedHeight = prefs.getString('height');
+      _dobInput.text = prefs.getString('dob') != null ? prefs.getString('dob').toString() : "";
+
+      _heightInput.text =
+          prefs.getString('height') != null ? prefs.getString('height').toString() : "";
     });
   }
 
@@ -64,12 +61,9 @@ class _ProfileState extends State<Profile> {
   }
 
   bool _saveButtonEnabled() {
-    if (_genderInput != null && _dobInput.text.isNotEmpty && _heightInput.text.isNotEmpty) {
-      if (_genderInput.toString() != _savedGender ||
-          _dobInput.text != _savedDoB ||
-          _heightInput.text != _savedHeight) {
-        return true;
-      }
+    if (_fieldChanged &&
+        (_genderInput != null && _dobInput.text.isNotEmpty && _heightInput.text.isNotEmpty)) {
+      return true;
     }
     return false;
   }
@@ -124,6 +118,7 @@ class _ProfileState extends State<Profile> {
                     onChanged: (Gender? value) {
                       setState(() {
                         _genderInput = value;
+                        _fieldChanged = true;
                       });
                     },
                   ),
@@ -134,6 +129,7 @@ class _ProfileState extends State<Profile> {
                     onChanged: (Gender? value) {
                       setState(() {
                         _genderInput = value;
+                        _fieldChanged = true;
                       });
                     },
                   ),
@@ -167,15 +163,17 @@ class _ProfileState extends State<Profile> {
                       readOnly: true,
                       onTap: () async {
                         DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(DateTime.now().year - 120),
-                            lastDate: DateTime.now());
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(DateTime.now().year - 120),
+                          lastDate: DateTime.now(),
+                        );
 
                         if (pickedDate != null) {
                           String formattedDate = DateFormat('dd-MM-yyy').format(pickedDate);
                           setState(() {
                             _dobInput.text = formattedDate;
+                            _fieldChanged = true;
                           });
                         }
                       },
@@ -208,7 +206,9 @@ class _ProfileState extends State<Profile> {
                     child: TextField(
                       controller: _heightInput,
                       onChanged: (value) {
-                        setState(() {});
+                        setState(() {
+                          _fieldChanged = true;
+                        });
                       },
                     ),
                   ),
