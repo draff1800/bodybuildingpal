@@ -37,8 +37,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const Profile()),
+                  MaterialPageRoute(builder: (context) => const Profile()),
                 );
               },
             )
